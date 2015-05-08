@@ -1,0 +1,114 @@
+NAMED PARAMETERS
+
+* Cuando queremos que por defecto, si al crear la clase no se lo hemos asignado, nos devuelva un valor del parametro, usamos la siguiente sintaxis:
+
+Class X
+	
+	def initialize name, age='18'
+		@name = name
+		@age = age
+	end
+end
+
+HERENCIA
+
+Class NewClass < Class_of_Heritage
+
+* Si queremos redefinir una funcion de la clase de herencia, pero queremos mantener ciertos parametros de esta, se usa el metodo 'super'
+
+	Class_of_Heritage
+
+		def initialize name
+			@name = name
+		end
+
+		def...
+		end
+	end
+
+	Class NewClass < Class_of_Heritage
+
+		def initialize name, color
+			super name
+			@color = color
+		end
+	end 
+
+ATRIBUTOS DE UNA VARIABLE
+
+* Podemos acceder a estos atributos desde fuera de la clase con: attr_reader(lee), attr_writter(escribe), attr_accessor(ambos)
+
+ARRAYS
+
+array = [] : introducir nuevo elemento al final 'array.push elemento', 
+			 quitar el último elemento 'array.pop', * podemos decirle el número de elementos que queremos quitar
+			 quitar el primer elemento 'array.shift', * podemos decirle el número de elementos que queremos quitar
+			 introducir nuevo elemento al principio 'array.unshift elemento', 
+			 introducir nuevo elemento en la posición que queremos 'array.insert posición, elemento'
+
+hash = {key => value} : 'hash.keys' nos devuelve un array con las claves, si almacenamos esto en una variable, por ejemplo, 'keys_array', usando el metodo .each 
+						=> keys_array.each {|key| puts hash[key]} nos devolvería el valor de cada clave.
+
+						'hash.value' nos devolvería los valores sin las claves
+
+						también podemos iterar por el hash de la siguiente manera...{key: 'value', key: 'value'}.each do |key, value|
+																						puts "#{key} -> #{value}"
+																					end
+
+metodo MAP:
+
+semejante a each, pero puede modificar el array...array.map; si queremos guardar esa modificacion tenemos que añadir "!"...array.map!
+
+metodo REDUCE (tambien inject):
+
+ejemplo --> [1,2,3].reduce do |x,y|  --> devuelve 6
+				x + y
+			end
+
+		1º - Coge 1 para x y 2 para y, y los suma
+		2º - asigna la suma a x y el 3 a y, y los suma
+		3º - como no hay más elementos devuelve la última suma
+
+
+		*Simplificaciones --> .reduce(:+) suma, .reduce(:*) multiplica 
+
+
+Simplificacion if...else:
+	
+	if condition
+		puts x
+	else			--> condition ? puts(x) (en caso de true) : puts(y) (en caso de false)
+		puts y
+	end
+
+#ejemplo ['cat', 'sheep', 'bear'].reduce { |memo, word| memo.length > word.length ? memo : word }
+
+
+Each with Index:
+
+	i = 0
+	['a','b','c'].each do |x|
+		puts  '[#{i}] #{x}'     --> Devuelve 1a, 2b, 3c
+		i += 1
+	end
+
+	['a','b','c'].each_with_index { |x,i| puts '[#{i}] #{x}' }
+
+Sorting:
+
+	['b','a'].sort --> ordena los elementos --> ['a','b']
+
+	cuando no son elementos comparables: ['B','a'].sort{|a,b| a.upcase <=> b.upcase} --> ['a','B']
+
+	[car1,car2,car3].sort_by {|n| n.noise} --> ordena comparando la caracteristica del objeto
+
+Gemfile:
+
+	- Gemfile
+	- Gemfile.lock
+	- Lib
+		- Todos los archivos .rb
+	- spec
+
+* imdb => https://github.com/ariejan/imdb
+

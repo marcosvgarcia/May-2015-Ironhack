@@ -1,6 +1,12 @@
 class ContactsController < ApplicationController
 
-	def home
-		render 'home'
+	def index
+
+    	@contacts = Contact.all
 	end
+
+	def show
+
+    	@contact = Contact.find(params[:id])
+  	end
 end

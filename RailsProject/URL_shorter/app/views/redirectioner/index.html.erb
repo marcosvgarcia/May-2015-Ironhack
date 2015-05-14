@@ -1,0 +1,11 @@
+<h1> View All Shorten URL </h1>
+
+	<ul>
+		<% @urls.each do |url| %>
+			<li><%= url.id %> 
+ 				URL: <%= url.url %> 
+				Created at: <%= url.created_at.mday %>-<%= url.created_at.mon %>-<%= url.created_at.year %>
+ 				Nº Vists: <%= url.visit %> 
+ 			</li>
+		<% end %>
+	</ul>

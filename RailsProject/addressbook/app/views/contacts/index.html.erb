@@ -1,9 +1,14 @@
-<h1>ALL CONTACTS</h1>
-
-<h3>Contacts list: </h3>
+<h1>Contacts</h1>
 <ul>
-	<% @contacts.each do |contact| %>
-
-		<li><%= contact.name %></li>
-	<% end %>
+    <% @contacts.each do |contact| %>
+        <% if contact.address != nil %> 
+            <li> ID: <%= contact.id %> - Name: <%= contact.name %> - Address: <%= contact.address %> </li>
+        <% else %>
+            <li> <%= contact.name %> </li>
+        <% end %>
+    <% end %>
 </ul>
+
+<% ('A'..'Z').each do |letter| %>
+	<%= link_to letter, '/search/' + letter %>
+<% end %>

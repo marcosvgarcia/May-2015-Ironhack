@@ -1,7 +1,33 @@
 
-Contact.create([
-	{name: 'Emanuel', address: 'Majadahonda', phone_number: 676676676, email_address: 'emanuel@example.com'},
-	{name: 'Fran', address: 'Valladolid', phone_number: 677677677, email_address: 'fran@example.com'},
-	{name: 'Jose Luis', address: 'Madrid', phone_number: 666666666, email_address: 'jodeluis@example.com'},
-	{name: 'María', address: 'Madrid', phone_number: 696969696, email_address: 'maria@example.com'}
-	])
+
+10.times do 
+	c = Contact.new	
+
+	aleatory = (0...8).map{ ('A'..'Z').to_a[rand(26)]  }.join
+	c.name = "#{aleatory}"
+
+	aleatory = (0...8).map{ ('A'..'Z').to_a[rand(26)]  }.join
+	c.address = "#{aleatory}"
+
+	c.save
+end
+
+puts 'All contacts succesfully created'
+
+
+10.times do
+
+	aleatory = (0...8).map{ ('A'..'Z').to_a[rand(26)]  }.join
+
+	rand_contact_id = (rand Contact.count)+1
+
+	c = Contact.find rand_contact_id
+
+	c.phonenumbers.create phonenumber: rand(111111111..777777777)
+
+	c.emails.create email: "#{aleatory}@#{aleatory}"
+
+	c.save
+end
+
+puts "Seed done!"

@@ -1,0 +1,10 @@
+<h1>Last 10 projects</h1>
+<ul>
+    <% @projects.each do |project| %>
+        <% if project.description != nil %> 
+            <li> <%= project.name %> <%= project.id %> - <%= project.description %> </li>
+        <% else %>
+            <li> <%= project.name %> </li>
+        <% end %>
+    <% end %>
+</ul>

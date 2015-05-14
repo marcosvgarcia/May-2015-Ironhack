@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-
-    get '/' => 'contacts#home'
-    get '/contacts' => 'contacts#index'
-  	get '/contacts/:id' => 'contacts#show'
+  get '/' => 'contacts#index'
+  get '/search/:letter' => 'contacts#list_contacts_by_letter'
+  get '/:contact_id/phonenumbers' => 'phonenumbers#index'
+  get '/:contact_id/emails' => 'emails#index'
 end

@@ -3,3 +3,7 @@
 
 <strong>Description</strong>
 <%= @project.description %>
+
+<%= link_to('ENTRIES', project_entries_path(@project)) %> |
+<%= link_to('PROJECTS', projects_path) %> |
+<%= link_to('EDIT', edit_project_path(@project)) %>

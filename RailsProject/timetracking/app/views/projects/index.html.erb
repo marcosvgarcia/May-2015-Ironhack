@@ -2,9 +2,19 @@
 <ul>
     <% @projects.each do |project| %>
         <% if project.description != nil %> 
+            
             <li> <%= project.name %> <%= project.id %> - <%= project.description %> </li>
+            
+            <li> 
+            	<%= link_to('ENTRIES', project_entries_path(project)) %> | 
+            	<%= link_to('PROJECT', project_path(project)) %> | 
+            	<%= link_to('EDIT', edit_project_path(project)) %> | 
+            	<%= link_to 'DESTROY', project_path(project),method: :delete, data: {confirm: "Are you sure?"} %>
+            </li> 
         <% else %>
             <li> <%= project.name %> </li>
         <% end %>
     <% end %>
 </ul>
+
+<%= link_to('NEW PROJECT', new_project_path) %>
